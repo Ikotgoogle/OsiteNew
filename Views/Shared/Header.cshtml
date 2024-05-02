@@ -4,19 +4,19 @@
     <link href="/css/header.css" rel="stylesheet" />
     <div class="container">
 
-        <div class="main">
+        <div class="buttons">
+            <img src="/img/logo.png" class="logo"/>
             @foreach(var button in HeaderButtons.headerButtonsList) {
                 <a asp-controller="@button.Item1" asp-action="@button.Item2">@button.Item3</a>
             }
-        </div>
 
-        <div class="regLog">
             @if(User.Identity.Name == null) {
                 <a asp-controller="Auth" asp-action="Login">Авторизация</a>
-                @* <a asp-controller="Auth" asp-action="Registration">Зарегистрироваться</a> *@
             } else {
-                <p> Привет, @User.Identity.Name! </p>
-                <a asp-controller="Auth" asp-action="Logout">Выйти</a>
+                <div> 
+                    @User.Identity.Name | 
+                    <a asp-controller="Auth" asp-action="Logout">Выйти</a>
+                </div>
             }
         </div>
     </div>
