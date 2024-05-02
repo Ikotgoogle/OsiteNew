@@ -11,6 +11,24 @@ namespace OsiteNew.Controllers {
         private MyAppContext _context;
         public AuthController(MyAppContext context) {
             _context = context;
+
+            //Role adm = new Role { Name = "admin" };
+            //Role user = new Role { Name = "user" };
+            //User admin = new User {
+            //    Name = "Иван",
+            //    LastName = "Вахрушев",
+            //    Email = "ikotskiy@gmail.com",
+            //    Password = "123",
+            //    PhoneNumber = "89960735548",
+            //    Role = adm,
+            //    Address = "Спортивная, 13",
+            //    RoleId = adm.Id,
+            //    Birthday = new DateOnly(2005, 12, 12)
+            //};
+            //_context.Roles.Add(adm);
+            //_context.Roles.Add(user);
+            //_context.Users.Add(admin);
+            //_context.SaveChanges();
         }
 
         private async Task Authenticate(User user) {
@@ -33,8 +51,9 @@ namespace OsiteNew.Controllers {
 
         [HttpPost]
         public async Task<IActionResult> Registration(User regUser) {
-            if(ModelState.IsValid) {
+            //if(ModelState.IsValid) {
                 User user = await _context.Users.FirstOrDefaultAsync(u => u.Email == regUser.Email);
+                Role role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
                 if(user == null) {
                     user = new User {
                         Name = regUser.Name,
@@ -45,12 +64,10 @@ namespace OsiteNew.Controllers {
                         Password = regUser.Password,
                         Address = regUser.Address,
                         About = regUser.About,
-                        Nickname = regUser.Nickname
+                        Nickname = regUser.Nickname,
+                        Role = role,
+                        RoleId = role.Id
                     };
-
-                    Role role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
-                    if(user.Role == null)
-                        user.Role = role;
 
                     _context.Users.Add(user);
                     await _context.SaveChangesAsync();
@@ -60,7 +77,7 @@ namespace OsiteNew.Controllers {
                     return RedirectToAction("HomePage", "Home");
                 } else
                     ModelState.AddModelError("", "Некорректные логин или пароль");
-            }
+            //}
             return View(regUser);
         }
 
@@ -86,7 +103,7 @@ namespace OsiteNew.Controllers {
         [Authorize()]
         public async Task<IActionResult> Logout() {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("MianPage", "Home");
+            return RedirectToAction("HomePage", "Home");
         }
     }
 }

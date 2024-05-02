@@ -1,5 +1,5 @@
 ﻿@using OsiteNew.Models
-@model LoginModel
+
 <header>
     <link href="/css/header.css" rel="stylesheet" />
     <div class="container">
@@ -15,7 +15,7 @@
                 <a asp-controller="Auth" asp-action="Login">Авторизация</a>
                 @* <a asp-controller="Auth" asp-action="Registration">Зарегистрироваться</a> *@
             } else {
-                <p> Привет, @Model.Email! </p>
+                <p> Привет, @User.Identity.Name! </p>
                 <a asp-controller="Auth" asp-action="Logout">Выйти</a>
             }
         </div>
