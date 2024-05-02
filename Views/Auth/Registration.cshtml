@@ -1,0 +1,61 @@
+﻿@using OsiteNew.Models;
+@model User
+
+<div>
+    <h1>Регистрация</h1>
+    <div>
+        <form method="post" asp-controller="Auth" asp-action="Registration">
+            <div>
+                <label asp-for="Name">Имя: </label>
+                <input type="text" asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+
+            </div>
+            <div>
+                <label asp-for="LastName">Фамилия: </label>
+                <input type="text" asp-for="LastName" />
+                <span asp-validation-for="LastName"></span>
+
+            </div>
+            <div>
+                <label asp-for="Nickname">Придумайте ник (необяз): </label>
+                <input type="text" asp-for="Nickname" />
+                <span asp-validation-for="Nickname"></span>
+            </div>
+            <div>
+                <label asp-for="Birthday">День рождения: </label>
+                <input type="date" asp-for="Birthday" />
+                <span asp-validation-for="Birthday"></span>
+
+            </div>
+            <div>
+                <label asp-for="PhoneNumber">Номер телефона: </label>
+                <input type="tel" asp-for="PhoneNumber" />
+                <span asp-validation-for="PhoneNumber"></span>
+            </div>
+            <div>
+                <label asp-for="Address">Адрес проживания: </label>
+                <input type="text" asp-for="Address" />
+                <span asp-validation-for="Address"></span>
+            </div>
+            <div>
+                <label asp-for="About">Расскажите о себе: </label>
+                <input type="text" asp-for="About" />
+                <span asp-validation-for="About"></span>
+            </div>
+
+            <div>
+                <label asp-for="Email">Email:</label>
+                <input type="text" asp-for="Email" />
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div>
+                <label asp-for="Password">Пароль:</label>
+                <input type="text" asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <input type="submit" value="Зарегестрироваться" />
+        </form>
+    </div>
+</div>
+

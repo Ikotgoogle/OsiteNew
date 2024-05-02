@@ -1,0 +1,22 @@
+﻿.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 75px;
+    font-size: 30px;
+    justify-content: space-around;
+}
+
+.main {
+    flex: 10 600px;
+    background-color: bisque;
+}
+
+.regLog {
+    flex: 1;
+}
+
+a {
+    justify-items: stretch;
+    text-decoration: none;
+}

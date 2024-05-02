@@ -1,0 +1,19 @@
+﻿@model OsiteNew.Models.LoginModel
+
+<h1>Вход в аккаунт</h1>
+<form method="post" asp-controller="Auth" asp-action="Login">
+    <div>
+        <label asp-for="Email">Email:</label>
+        <input type="text" asp-for="Email" />
+        <span asp-validation-for="Email" />
+    </div>
+    <div>
+        <label asp-for="Password">Пароль:</label>
+        <input type="text" asp-for="Password" />
+        <span asp-validation-for="Password" />
+    </div>
+    <input type="submit" value="Войти" />
+</form>
+<form>
+    <input type="submit" asp-controller="Auth" asp-action="Registration" value="Зарегистрироваться" />
+</form>
