@@ -1,22 +1,49 @@
 ﻿.container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    height: 75px;
-    font-size: 30px;
+    flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
 }
 
-.main {
-    flex: 10 600px;
-    background-color: bisque;
+.buttons {
+    display: flex;
+    gap: 150px;
 }
 
-.regLog {
-    flex: 1;
+.logo {
+    max-width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+@media (max-width: 1580px) {
+    .buttons {
+        gap: 120px;
+    }
+    .container{
+        justify-content:space-between;
+    }
+    .logo{
+        float: right;
+    }
+}
+
+@media (max-width: 1375px){
+    .buttons{
+        gap: 50px;
+    }
+}
+
+@media (max-width: 1375px){
+    .buttons{
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
 a {
-    justify-items: stretch;
     text-decoration: none;
 }

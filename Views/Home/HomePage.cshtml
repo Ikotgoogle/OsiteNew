@@ -1,1 +1,5 @@
 ﻿<h1>Страница вывода котика и постов</h1>
+
+@if(!string.IsNullOrEmpty(ViewBag.ImageUrl)) {
+    <img src="@ViewBag.ImageUrl" alt="Котик">
+}
