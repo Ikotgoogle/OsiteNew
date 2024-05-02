@@ -18,7 +18,7 @@
     height: auto;
     margin-right: 20px;
 }
-
+/*
 @media (max-width: 1580px) {
     .buttons {
         gap: 120px;
@@ -42,7 +42,7 @@
         flex-direction: column;
         gap: 10px;
     }
-}
+}*/
 
 a {
     text-decoration: none;
