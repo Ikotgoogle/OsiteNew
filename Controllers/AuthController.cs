@@ -88,8 +88,7 @@ namespace OsiteNew.Controllers {
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel logUser) {
             if(ModelState.IsValid) {
-                //User user = _context.Users.Where(u => u.Email == logUser.Email && u.Password == logUser.Password) as User;
-                User user = await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Email == logUser.Email && u.Password == logUser.Password);
+                User user = _context.Users.Include(u => u.Role).FirstOrDefault(u => u.Email == logUser.Email && u.Password == logUser.Password);
                 if(user != null) {
                     await Authenticate(user); // аутентификация
 

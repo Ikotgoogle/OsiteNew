@@ -1,5 +1,6 @@
-﻿<h1>Страница вывода котика и постов</h1>
+﻿<link href="/css/home.css" rel="stylesheet" />
+
 
 @if(!string.IsNullOrEmpty(ViewBag.ImageUrl)) {
-    <img src="@ViewBag.ImageUrl" alt="Котик">
+    <img class="cat" src="@ViewBag.ImageUrl" alt="Котик">
 }
