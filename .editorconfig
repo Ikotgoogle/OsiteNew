@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS8974: Преобразование группы методов в незаменямый тип
+dotnet_diagnostic.CS8974.severity = none

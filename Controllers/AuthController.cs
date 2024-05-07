@@ -76,7 +76,7 @@ namespace OsiteNew.Controllers {
 
                     return RedirectToAction("HomePage", "Home");
                 } else
-                    ModelState.AddModelError("", "Некорректные логин или пароль");
+                    ModelState.AddModelError("", "Пользователь с таким Email уже существует.");
             //}
             return View(regUser);
         }
@@ -92,9 +92,11 @@ namespace OsiteNew.Controllers {
                 if(user != null) {
                     await Authenticate(user); // аутентификация
 
+                    TempData["logUserRole"] = user.Role;
+
                     return RedirectToAction("HomePage", "Home");
                 }
-                ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                ModelState.AddModelError("", "Некорректные логин и(или) пароль.");
             }
             return View(logUser);
         }

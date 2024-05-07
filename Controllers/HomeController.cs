@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using OsiteNew.Models;
 
 namespace OsiteNew.Controllers {
     public class HomeController : Controller {
@@ -14,6 +15,8 @@ namespace OsiteNew.Controllers {
                     ViewBag.ImageUrl = imageUrl;
                 }
             }
+
+
             return View();
         }
     }

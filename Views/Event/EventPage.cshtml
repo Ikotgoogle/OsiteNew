@@ -5,14 +5,26 @@
 <div class="events">
     @foreach(var item in Model) {
         <div class="main">
-            <h2>@item.Title,</h2>
-            <h2>@item.Date </h2>
-            <h2>@item.Time</h2>
+            <div class="title">
+                <h2>@item.Title,</h2>
+                <h2>@item.Date </h2>
+                <h2>@item.Time</h2>
+            </div>
+
+            <form method="post">
+                <input type="hidden" name="id" value="@item.Id" />
+                <input asp-action="Delete" type="submit" value="Удалить" />
+                @* <a asp-controller ="Event" asp-action="Edit"><button>Изменить</button></a> *@
+            </form>
         </div>
 
         <div class="place">@item.Place</div>
         <div class="desc">@item.Description</div>
     }
 </div>
-
-
+@if (User.Identity.Name != null) {
+    <a asp-controller="Event" asp-action="NewEvent">
+        <span class="newEventButton"></span>
+    </a>
+    
+}
