@@ -64,6 +64,7 @@ namespace OsiteNew.Controllers {
                 _context.Events.Remove(ev);
                 await _context.SaveChangesAsync();
             }
+            
             return View("EventPage", await GetSortedEvents());
         }
     }

@@ -16,8 +16,9 @@ namespace OsiteNew.Controllers {
                 }
             }
 
+            var q = User.Identity.Name;
 
-            return View();
+            return View("HomePage", q);
         }
     }
 }

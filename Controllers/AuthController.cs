@@ -35,7 +35,7 @@ namespace OsiteNew.Controllers {
 
             var claims = new List<Claim>
                 {
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, user.Id.ToString()),
                     new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name),
                 };
 
@@ -91,8 +91,6 @@ namespace OsiteNew.Controllers {
                 User user = _context.Users.Include(u => u.Role).FirstOrDefault(u => u.Email == logUser.Email && u.Password == logUser.Password);
                 if(user != null) {
                     await Authenticate(user); // аутентификация
-
-                    TempData["logUserRole"] = user.Role;
 
                     return RedirectToAction("HomePage", "Home");
                 }
