@@ -32,11 +32,11 @@ namespace OsiteNew.Controllers {
         }
 
         private async Task Authenticate(User user) {
-
             var claims = new List<Claim>
                 {
                     new Claim(ClaimsIdentity.DefaultNameClaimType, user.Id.ToString()),
                     new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name),
+                    new Claim(ClaimTypes.Email, user.Email)
                 };
 
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie",

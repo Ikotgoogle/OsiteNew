@@ -4,6 +4,11 @@ using OsiteNew.Models;
 
 namespace OsiteNew.Controllers {
     public class HomeController : Controller {
+        private MyAppContext _context;
+        public HomeController(MyAppContext context) {
+            _context = context;
+        }
+
         public async Task<IActionResult> HomePage() {
             using(HttpClient client = new HttpClient()) {
                 HttpResponseMessage response = await client.GetAsync("https://api.thecatapi.com/v1/images/search");
@@ -11,14 +16,17 @@ namespace OsiteNew.Controllers {
                     string json = await response.Content.ReadAsStringAsync();
                     dynamic data = JsonConvert.DeserializeObject(json);
                     string imageUrl = data[0].url;
-
                     ViewBag.ImageUrl = imageUrl;
                 }
             }
+            if(User.Identity.IsAuthenticated) {
+                int userId = Int32.Parse(User.Identity.Name);
+                User loggedUser = await _context.Users.FindAsync(userId);
+                return View("HomePage", loggedUser);
+            }
 
-            var q = User.Identity.Name;
+            return View();
 
-            return View("HomePage", q);
         }
     }
 }

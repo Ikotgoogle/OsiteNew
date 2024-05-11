@@ -22,9 +22,8 @@
         <div class="desc">@item.Description</div>
     }
 </div>
-@if (User.Identity.Name != null) {
-    <a asp-controller="Event" asp-action="NewEvent">
-        <span class="newEventButton"></span>
-    </a>
-    
-}
+
+<a asp-controller="Event" asp-action="NewEvent">
+    <span class="newEventButton"></span>
+</a>
+   

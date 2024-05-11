@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OsiteNew.Models;
 
@@ -43,6 +44,7 @@ namespace OsiteNew.Controllers {
             return View(await GetSortedEvents());
         }
 
+        [Authorize(Roles = "admin")]
         public IActionResult NewEvent() {
             return View();
         }

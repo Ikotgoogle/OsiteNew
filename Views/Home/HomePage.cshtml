@@ -1,9 +1,10 @@
 ﻿@using OsiteNew.Models;
-@model string
+@model User
 
 <link href="/css/home.css" rel="stylesheet" />
 
-@Model
+@if (Model != null)
+    @Model.Name
 
 @if(!string.IsNullOrEmpty(ViewBag.ImageUrl)) {
     <img class="cat" src="@ViewBag.ImageUrl" alt="Котик">
