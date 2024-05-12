@@ -1,11 +1,53 @@
-﻿@using OsiteNew.Models;
-@model User
-
+﻿@using OsiteNew.ViewModels;
+@model HomeVM
 <link href="/css/home.css" rel="stylesheet" />
 
-@if (Model != null)
-    @Model.Name
-
-@if(!string.IsNullOrEmpty(ViewBag.ImageUrl)) {
-    <img class="cat" src="@ViewBag.ImageUrl" alt="Котик">
+@{
+    bool IsAdmin = false;
+    bool IsMyPost = false;
+    bool IsAuthenticated = false;
 }
+@if (User.Identity.IsAuthenticated)
+    IsAuthenticated = true;
+
+@if(IsAuthenticated && Model.LogUser.RoleId == 1)
+    IsAdmin = true;
+
+
+<img class="cat" src="@ViewBag.ImageUrl" alt="Котик">
+
+<div class="posts">
+    @foreach (var post in Model.Posts) {
+        IsMyPost = false;
+        @if (IsAuthenticated && Model.LogUser.Email == post.Author.Email)
+            IsMyPost = true;
+        <div class="post">
+            <div class="postHead">
+                <div class="author">
+                    <img src="@post.Author.Avatar"/>
+                    <p>@post.Author.Nickname</p>
+                </div>
+                <div class="title">
+                    <h2>@post.Title,</h2>
+                    <h2>@post.Date </h2>
+                    <h2>@post.Time</h2>
+                </div>
+
+                @if(IsAdmin || IsMyPost) {
+                    <form method="post">
+                        <input type="hidden" name="id" value="@post.Id" />
+                        <input asp-action="Delete" type="submit" value="Удалить" />
+                        @* <a asp-controller ="Event" asp-action="Edit"><button>Изменить</button></a> *@
+                    </form>
+                }
+            </div>
+
+            <div class="desc">@post.Description</div>
+        </div>
+    }
+</div>
+
+
+<a asp-action="NewPost">
+    <span class="newPostButton"></span>
+</a>

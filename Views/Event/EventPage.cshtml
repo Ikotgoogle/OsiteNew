@@ -1,21 +1,27 @@
-﻿@using OsiteNew.Models
-@model List<Event>
+﻿@using OsiteNew.ViewModels
+@model EventsVM
 <link href="/css/events.css" rel="stylesheet" />
 
+@{ bool IsAdminAuthenticated = false; }
+@if (User.Identity.IsAuthenticated && Model.User.RoleId == 1) {
+    IsAdminAuthenticated = true;
+}
+
 <div class="events">
-    @foreach(var item in Model) {
+    @foreach(var item in Model.Events) {
         <div class="main">
             <div class="title">
                 <h2>@item.Title,</h2>
                 <h2>@item.Date </h2>
                 <h2>@item.Time</h2>
             </div>
-
-            <form method="post">
-                <input type="hidden" name="id" value="@item.Id" />
-                <input asp-action="Delete" type="submit" value="Удалить" />
-                @* <a asp-controller ="Event" asp-action="Edit"><button>Изменить</button></a> *@
-            </form>
+            @if(IsAdminAuthenticated) {
+                <form method="post">
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <input asp-action="Delete" type="submit" value="Удалить" />
+                    @* <a asp-controller ="Event" asp-action="Edit"><button>Изменить</button></a> *@
+                </form>
+            }
         </div>
 
         <div class="place">@item.Place</div>
@@ -23,7 +29,9 @@
     }
 </div>
 
-<a asp-controller="Event" asp-action="NewEvent">
-    <span class="newEventButton"></span>
-</a>
+@if(IsAdminAuthenticated) { 
+    <a asp-controller="Event" asp-action="NewEvent">
+        <span class="newEventButton"></span>
+    </a>
+}
    

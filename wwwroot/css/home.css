@@ -1,5 +1,70 @@
-﻿.cat {
+﻿.postHead {
+    display: flex;
+    align-items: center;
+    margin-left: 12vw;
+    margin-top: 2.5vh;
+    height: 40px;
+}
+
+.author{
+
+}
+
+.title {
+    display: flex;
+}
+
+    .title h2 {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+.main form {
+    margin-left: auto;
+    font-size: 0px;
+}
+
+.desc {
+    width: 65%;
+    margin-left: 15vw;
+    margin-top: 0.5vh;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+        .main h2 {
+            font-size: 20px;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+    .desc {
+        margin-left: 15vw;
+    }
+}
+
+.cat {
     width: auto;
     height: 50vh;
     max-width: inherit;
+}
+
+.newPostButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid #242424;
+    width: 80px;
+    height: 80px;
+    background-image: url('../img/plus.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }

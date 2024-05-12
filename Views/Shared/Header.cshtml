@@ -4,7 +4,9 @@
 <header>
     <link href="/css/header.css" rel="stylesheet" />
     <div class="container">
-        <img src="/img/logo.png" class="logo"/>
+        <a asp-controller="Home" asp-action="HomePage">
+            <span class="logoButton"></span>
+        </a>
         <div class="buttons">
             @foreach(var button in HeaderButtons.headerButtonsList) {
                 <a asp-controller="@button.Item1" asp-action="@button.Item2">@button.Item3</a>

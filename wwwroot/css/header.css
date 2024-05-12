@@ -17,9 +17,14 @@
     gap: 150px;
 }
 
-.logo {
-    max-width: 200px;
-    height: auto;
+.logoButton {
+    display: flex;
+    border-radius: 50%;
+    width: 6em;
+    height: 6em;
+    background-image: url('../img/logo.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 @media (max-width: 1615px) {

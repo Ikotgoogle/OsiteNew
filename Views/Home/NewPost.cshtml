@@ -1,0 +1,18 @@
+﻿@using OsiteNew.Models;
+@model Post
+
+<h1>Ваш новый пост</h1>
+
+<form method="post" asp-controller="Home" asp-action="NewPost">
+    <div>
+        <label asp-for="Title">Title: </label>
+        <input type="text" asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div>
+        <label asp-for="Description">Description: </label>
+        <input type="text" asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+    <input type="submit" value="Опубликовать" />
+</form>

@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OsiteNew.Models;
+using OsiteNew.ViewModels;
 
 namespace OsiteNew.Controllers {
     public class EventController : Controller {
         private MyAppContext _context;
         public EventController(MyAppContext context) {
             _context = context;
-
+            #region addData
             //Event ev1 = new Event { 
             //    Title = "День Рождение чела",
             //    Place = "КФС",
@@ -32,7 +33,10 @@ namespace OsiteNew.Controllers {
 
             //_context.Events.AddRange(ev1, ev2, ev3);
             //_context.SaveChanges();
+            #endregion
         }
+
+        private EventsVM _eventsVM = new();
 
         async Task<List<Event>> GetSortedEvents() {
             List<Event> events = await _context.Events.ToListAsync();
@@ -40,8 +44,18 @@ namespace OsiteNew.Controllers {
             return events;
         }
 
+        async Task<EventsVM> GetVM() {
+            _eventsVM.Events = await GetSortedEvents();
+            if(User.Identity.IsAuthenticated) {
+                int userId = Int32.Parse(User.Identity.Name);
+                User loggedUser = await _context.Users.FindAsync(userId);
+                _eventsVM.User = loggedUser;
+            }
+            return _eventsVM;
+        }
+
         public async Task<IActionResult> EventPage() {
-            return View(await GetSortedEvents());
+            return View(await GetVM());
         }
 
         [Authorize(Roles = "admin")]
@@ -56,10 +70,11 @@ namespace OsiteNew.Controllers {
                 _context.Events.Add(ev);
                 await _context.SaveChangesAsync();
             }
-            return View("EventPage", await GetSortedEvents()) ;
+            return View("EventPage", await GetVM()) ;
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int id) {
             var ev = await _context.Events.FindAsync(id);
             if(ev != null) {
@@ -67,7 +82,7 @@ namespace OsiteNew.Controllers {
                 await _context.SaveChangesAsync();
             }
             
-            return View("EventPage", await GetSortedEvents());
+            return View("EventPage", await GetVM());
         }
     }
 }

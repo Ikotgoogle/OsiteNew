@@ -13,5 +13,9 @@ namespace OsiteNew.Controllers {
             User logUser = await _context.Users.FindAsync(Int32.Parse(logUserId));
             return View(logUser);
         }
+
+        public async Task<IActionResult> NewPost() {
+            return RedirectToAction("NewPost", "Home");
+        }
     }
 }

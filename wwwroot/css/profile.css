@@ -3,3 +3,18 @@
     height: 350px; 
     width: 350px;
 }
+
+.newPostButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid #242424;
+    width: 80px;
+    height: 80px;
+    background-image: url('../img/plus.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
