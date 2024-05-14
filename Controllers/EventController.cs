@@ -36,6 +36,7 @@ namespace OsiteNew.Controllers {
             #endregion
         }
 
+        int EditEventID;
         private EventsVM _eventsVM = new();
 
         async Task<List<Event>> GetSortedEvents() {
@@ -45,6 +46,18 @@ namespace OsiteNew.Controllers {
         }
 
         async Task<EventsVM> GetVM() {
+            _eventsVM.Events = await GetSortedEvents();
+            if(User.Identity.IsAuthenticated) {
+                int userId = Int32.Parse(User.Identity.Name);
+                User loggedUser = await _context.Users.FindAsync(userId);
+                _eventsVM.User = loggedUser;
+            }
+            return _eventsVM;
+        }
+
+        async Task<EventsVM> GetVM(Event? ev, bool IsEditMode) {
+            _eventsVM.Event = ev;
+            _eventsVM.IsEditMode = IsEditMode;
             _eventsVM.Events = await GetSortedEvents();
             if(User.Identity.IsAuthenticated) {
                 int userId = Int32.Parse(User.Identity.Name);
@@ -74,14 +87,33 @@ namespace OsiteNew.Controllers {
         }
 
         [HttpPost]
+        public async Task<IActionResult> Edit(int id) {
+            EditEventID = id;
+            var ev = await _context.Events.FindAsync(id);
+            return View("NewEvent", await GetVM(ev, true));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmEdit(Event edEv) {
+            if(ModelState.IsValid) {
+                var ev = await _context.Events.FindAsync(EditEventID);
+                ev.Title = edEv.Title;
+                ev.Description = edEv.Description;
+                ev.Place = edEv.Place;
+                ev.Date = edEv.Date;
+                ev.Time = edEv.Time;
+                await _context.SaveChangesAsync();
+            }
+            EditEventID = -1;
+            return RedirectToAction("EventPage");
+        }
+
+        [HttpPost]
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int id) {
             var ev = await _context.Events.FindAsync(id);
-            if(ev != null) {
-                _context.Events.Remove(ev);
-                await _context.SaveChangesAsync();
-            }
-            
+            _context.Events.Remove(ev);
+            await _context.SaveChangesAsync();            
             return View("EventPage", await GetVM());
         }
     }

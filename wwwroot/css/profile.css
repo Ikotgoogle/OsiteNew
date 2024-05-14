@@ -1,7 +1,100 @@
-﻿.ava {
+﻿.page{
+    margin-top: 5vh;
+}
+
+.head {
+    min-height: 350px;
+    max-height: 400px;
+    align-items: center;
+    margin-left: 12vw;
+    margin-top: 2.5vh;
+}
+
+.ava {
     float: left; 
     height: 350px; 
     width: 350px;
+    border-radius:50%;
+}
+
+.avaChanger{
+    display: flex;
+    flex-direction:column;
+    margin-left: 20vw;
+    width: 300px
+}
+
+.personalData{
+    margin-left: 20vw;
+}
+
+.postHead {
+    display: flex;
+    align-items: center;
+    margin-left: 12vw;
+    margin-top: 2.5vh;
+    height: 50px;
+}
+
+.author {
+    margin-top: 55px;
+}
+
+    .author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+.nick {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 3px
+}
+
+.title {
+    display: flex;
+    margin-left: 10px;
+}
+
+    .title h2 {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+.postHead form {
+    margin-left: auto;
+    font-size: 0px;
+}
+
+.desc {
+    display: flex;
+    width: 65%;
+    margin-left: 17vw;
+    margin-top: 0.5vh;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+        .main h2 {
+            font-size: 20px;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+    .desc {
+        margin-left: 15vw;
+    }
+}
+
+.posts{
+    margin-top:5vh;
 }
 
 .newPostButton {

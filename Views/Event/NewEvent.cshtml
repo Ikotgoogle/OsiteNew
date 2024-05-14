@@ -1,31 +1,65 @@
-﻿@using OsiteNew.Models;
-@model Event
+﻿@using OsiteNew.ViewModels;
+@model EventsVM
+
+@if(!Model.IsEditMode) {
+    
 <h1>Создание нового события</h1>
 <form method="post" asp-controller="Event" asp-action="NewEvent">
     <div>
-        <label asp-for="Title">Title: </label>
-        <input type="text" asp-for="Title" />
-        <span asp-validation-for="Title"></span>
+        <label asp-for="Event.Title">Title: </label>
+        <input type="text" asp-for="Event.Title" />
+        <span asp-validation-for="Event.Title"></span>
     </div>
     <div>
-        <label asp-for="Place">Place: </label>
-        <input type="text" asp-for="Place" />
-        <span asp-validation-for="Place"></span>
+        <label asp-for="Event.Place">Place: </label>
+        <input type="text" asp-for="Event.Place" />
+        <span asp-validation-for="Event.Place"></span>
     </div>
     <div>
-        <label asp-for="Description">Description: </label>
-        <input type="text" asp-for="Description" />
-        <span asp-validation-for="Description"></span>
+        <label asp-for="Event.Description">Description: </label>
+        <input type="text" asp-for="Event.Description" />
+        <span asp-validation-for="Event.Description"></span>
     </div>
     <div>
-        <label asp-for="Date">Date: </label>
-        <input type="date" asp-for="Date" />
-        <span asp-validation-for="Date"></span>
+        <label asp-for="Event.Date">Date: </label>
+        <input type="date" asp-for="Event.Date" />
+        <span asp-validation-for="Event.Date"></span>
     </div>
     <div>
-        <label asp-for="Time">Time: </label>
-        <input type="time" asp-for="Time" />
-        <span asp-validation-for="Time"></span>
+        <label asp-for="Event.Time">Time: </label>
+        <input type="time" asp-for="Event.Time" />
+        <span asp-validation-for="Event.Time"></span>
     </div>
     <input type="submit" value="Создать" />
-</form>
+    </form>
+} else {
+    <h1>Редактирование события</h1>
+    <form method="post" asp-controller="Event" asp-action="ConfirmEdit">
+        <div>
+            <label asp-for="Event.Title">Title: </label>
+            <input type="text" asp-for="Event.Title" value="@Model.Event.Title"/>
+            <span asp-validation-for="Event.Title"></span>
+        </div>
+        <div>
+            <label asp-for="Event.Place">Place: </label>
+            <input type="text" asp-for="Event.Place" value="@Model.Event.Place"/>
+            <span asp-validation-for="Event.Place"></span>
+        </div>
+        <div>
+            <label asp-for="Event.Description">Description: </label>
+            <input type="text" asp-for="Event.Description" value="@Model.Event.Description" />
+            <span asp-validation-for="Event.Description"></span>
+        </div>
+        <div>
+            <label asp-for="Event.Date">Date: </label>
+            <input type="date" asp-for="Event.Date" value="@Model.Event.Date" />
+            <span asp-validation-for="Event.Date"></span>
+        </div>
+        <div>
+            <label asp-for="Event.Time">Time: </label>
+            <input type="time" asp-for="Event.Time" value="@Model.Event.Time" />
+            <span asp-validation-for="Event.Time"></span>
+        </div>
+        <input type="submit" value="Изменить" />
+    </form>
+}

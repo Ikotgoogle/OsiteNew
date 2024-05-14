@@ -80,7 +80,6 @@ namespace OsiteNew.Controllers {
         }
 
         [HttpPost]
-        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int id) {
             var p = await _context.Posts.FindAsync(id);
             if(p != null) {
