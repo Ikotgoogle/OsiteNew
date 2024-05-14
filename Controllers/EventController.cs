@@ -72,14 +72,19 @@ namespace OsiteNew.Controllers {
         }
 
         [Authorize(Roles = "admin")]
-        public IActionResult NewEvent() {
-            return View();
+        public async Task<IActionResult> NewEvent() {
+            return View(await GetVM());
         }
 
         [HttpPost]
-        public async Task<IActionResult> NewEvent(Event newEv) {
+        public async Task<IActionResult> NewEvent(EventsVM newEv) {
             if(ModelState.IsValid) {
-                Event ev = new Event { Title = newEv.Title, Description = newEv.Description, Place = newEv.Place, Date = newEv.Date, Time = newEv.Time };
+                Event ev = new Event { 
+                    Title = newEv.Event.Title, 
+                    Description = newEv.Event.Description, 
+                    Place = newEv.Event.Place, 
+                    Date = newEv.Event.Date, 
+                    Time = newEv.Event.Time };
                 _context.Events.Add(ev);
                 await _context.SaveChangesAsync();
             }
