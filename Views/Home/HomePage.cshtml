@@ -13,8 +13,10 @@
 @if(IsAuthenticated && Model.LogUser.RoleId == 1)
     IsAdmin = true;
 
+    @if(!String.IsNullOrEmpty(ViewBag.ImageUrl)){
 
-<img class="cat" src="@ViewBag.ImageUrl" alt="Котик">
+        <img class="cat" src="@ViewBag.ImageUrl" alt="Котик">
+    }
 
 <div class="posts">
     @foreach (var post in Model.Posts) {

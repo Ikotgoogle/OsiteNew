@@ -99,14 +99,14 @@ namespace OsiteNew.Controllers {
         }
 
         [HttpPost]
-        public async Task<IActionResult> ConfirmEdit(Event edEv) {
+        public async Task<IActionResult> ConfirmEdit(EventsVM edEv, int id) {
             if(ModelState.IsValid) {
                 var ev = await _context.Events.FindAsync(EditEventID);
-                ev.Title = edEv.Title;
-                ev.Description = edEv.Description;
-                ev.Place = edEv.Place;
-                ev.Date = edEv.Date;
-                ev.Time = edEv.Time;
+                ev.Title = edEv.Event.Title;
+                ev.Description = edEv.Event.Description;
+                ev.Place = edEv.Event.Place;
+                ev.Date = edEv.Event.Date;
+                ev.Time = edEv.Event.Time;
                 await _context.SaveChangesAsync();
             }
             EditEventID = -1;

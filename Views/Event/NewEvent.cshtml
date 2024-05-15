@@ -60,6 +60,7 @@
             <input type="time" asp-for="Event.Time" value="@Model.Event.Time" />
             <span asp-validation-for="Event.Time"></span>
         </div>
+        <input type="hidden" name="id" value="@Model.Event.Id"/>
         <input type="submit" value="Изменить" />
     </form>
 }
