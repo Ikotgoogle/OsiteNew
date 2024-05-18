@@ -49,8 +49,7 @@ namespace OsiteNew.Controllers {
                     await avatar.CopyToAsync(fileStream); 
                 }
 
-                var logUserId = User.Identity.Name;
-                User logUser = await _context.Users.FindAsync(Int32.Parse(logUserId));
+                User logUser = await GetLogUser();
                 logUser.Avatar = "/img/" + uniqueFileName;
                 await _context.SaveChangesAsync();
             }

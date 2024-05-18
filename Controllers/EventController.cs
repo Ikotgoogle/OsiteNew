@@ -36,7 +36,6 @@ namespace OsiteNew.Controllers {
             #endregion
         }
 
-        int EditEventID;
         private EventsVM _eventsVM = new();
 
         async Task<List<Event>> GetSortedEvents() {
@@ -93,7 +92,6 @@ namespace OsiteNew.Controllers {
 
         [HttpPost]
         public async Task<IActionResult> Edit(int id) {
-            EditEventID = id;
             var ev = await _context.Events.FindAsync(id);
             return View("NewEvent", await GetVM(ev, true));
         }
@@ -101,7 +99,7 @@ namespace OsiteNew.Controllers {
         [HttpPost]
         public async Task<IActionResult> ConfirmEdit(EventsVM edEv, int id) {
             if(ModelState.IsValid) {
-                var ev = await _context.Events.FindAsync(EditEventID);
+                var ev = await _context.Events.FindAsync(id);
                 ev.Title = edEv.Event.Title;
                 ev.Description = edEv.Event.Description;
                 ev.Place = edEv.Event.Place;
@@ -109,7 +107,6 @@ namespace OsiteNew.Controllers {
                 ev.Time = edEv.Event.Time;
                 await _context.SaveChangesAsync();
             }
-            EditEventID = -1;
             return RedirectToAction("EventPage");
         }
 
