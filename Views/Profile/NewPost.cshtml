@@ -1,18 +1,19 @@
-﻿@using OsiteNew.Models;
-@model Post
+﻿@using OsiteNew.ViewModels;
+@model ProfileVM
 
-<h1>Ваш новый пост</h1>
+<h1 class="header">Ваш новый пост</h1>
 
-<form method="post" asp-controller="Home" asp-action="NewPost">
-    <div>
-        <label asp-for="Title">Title: </label>
-        <input type="text" asp-for="Title" />
-        <span asp-validation-for="Title"></span>
+<form method="post" asp-controller="Profile" asp-action="NewPost" class="post-form">
+    <div class="form-group">
+        <label asp-for="Post.Title" class="form-label">Заголовок:</label> 
+        <input type="text" asp-for="Post.Title" class="form-input" maxlength="100"/>
+        <span asp-validation-for="Post.Title" class="validation-message"></span>
     </div>
-    <div>
-        <label asp-for="Description">Description: </label>
-        <input type="text" asp-for="Description" />
-        <span asp-validation-for="Description"></span>
+    <div class="form-group">
+        <label asp-for="Post.Description" class="form-label">Описание:</label>
+        <textarea asp-for="Post.Description" rows="5" class="form-textarea" maxlength="500"></textarea>
+        <span asp-validation-for="Post.Description" class="validation-message"></span>
     </div>
-    <input type="submit" value="Опубликовать" />
+
+    <input type="submit" class="submit-button" value="Опубликовать"/>
 </form>

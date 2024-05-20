@@ -11,8 +11,8 @@
 @if(IsAuthenticated && Model.LogUser.RoleId == 1)
     IsAdmin = true;
 
-
 <link href="/css/profile.css" rel="stylesheet" />
+
 <div class="page">
     <div class="head">
         <img class="ava" src="@Model.LogUser.Avatar"/>
@@ -30,9 +30,7 @@
         </div>
     </div>
 
-    <a asp-action="NewPost">
-        <span class="newPostButton"></span>
-    </a>
+    @await Html.PartialAsync("NewPost")
 
     <div class="posts">
         @foreach(var post in Model.Posts) {
@@ -46,7 +44,7 @@
                         <div class="nick">@post.Author.Nickname</div>
                     </div>
                     <div class="title">
-                        <h2>@post.Title,</h2>
+                        <h1>@post.Title</h1>
                         <h2>@post.Date </h2>
                         <h2>@post.Time</h2>
                     </div>
@@ -63,5 +61,4 @@
             </div>
         }
     </div>
-
 </div>

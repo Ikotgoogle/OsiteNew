@@ -62,13 +62,13 @@ namespace OsiteNew.Controllers {
         }
 
         [HttpPost]
-        public async Task<IActionResult> NewPost(NewPostModel newPost) {
+        public async Task<IActionResult> NewPost(ProfileVM newPost) {
             if(ModelState.IsValid) {
                 Post post = new Post {
-                    Title = newPost.Title,
+                    Title = newPost.Post.Title,
                     Date = DateOnly.FromDateTime(DateTime.Now),
                     Time = TimeOnly.FromDateTime(DateTime.Now),
-                    Description = newPost.Description,
+                    Description = newPost.Post.Description,
                     Author = await GetLogUser(),
                     Comments = new()
                 };

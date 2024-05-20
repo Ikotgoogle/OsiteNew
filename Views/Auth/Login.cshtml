@@ -1,19 +1,28 @@
 ﻿@model OsiteNew.Models.LoginModel
+<link href="/css/login.css" rel="stylesheet" />
 
-<h1>Вход в аккаунт</h1>
-<form method="post" asp-controller="Auth" asp-action="Login">
-    <div>
-        <label asp-for="Email">Email:</label>
-        <input type="text" asp-for="Email" />
-        <span asp-validation-for="Email" />
+<div class="login-container">
+    <div class="login-box">
+        <h1 class="heading">Вход в аккаунт</h1>
+        <form method="post" asp-controller="Auth" asp-action="Login" class="login-form">
+            <div class="form-group">
+                <label asp-for="Email" class="form-label">Email:</label>
+                <input type="text" asp-for="Email" class="form-input" maxlength="50"/>
+                <span asp-validation-for="Email" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="form-label">Пароль:</label>
+                <input type="text" asp-for="Password" class="form-input" maxlength="50"/>
+                <span asp-validation-for="Password" class="validation-message"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="login-button" value="Войти"></input>
+            </div>
+        </form>
+
+        <form class="register-form">
+            <button type="submit" asp-controller="Auth" asp-action="Registration" class="register-button">Зарегистрироваться</button>
+        </form>
     </div>
-    <div>
-        <label asp-for="Password">Пароль:</label>
-        <input type="text" asp-for="Password" />
-        <span asp-validation-for="Password" />
-    </div>
-    <input type="submit" value="Войти" />
-</form>
-<form>
-    <input type="submit" asp-controller="Auth" asp-action="Registration" value="Зарегистрироваться" />
-</form>
+</div>

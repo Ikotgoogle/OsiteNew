@@ -8,22 +8,33 @@
 
 .title {
     display: flex;
+    align-items: center;
+    font-family: 'Javanese Text';
 }
 
-.title h2 {
-    font-size: 24px;
-    margin-right: 10px;
-}
+    .title h1 {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+    .title h2 {
+        font-family: Consolas;
+        font-size: 20px;
+        margin-right: 10px;
+        color: dimgray;
+    }
 
 .main form {
     margin-left: auto;
     font-size: 0px;
 }
 
-.place{
+.place {
     width: 65%;
     margin-left: 15vw;
     font-size: 20px;
+    font-family: Cambria;
+    font-weight:900;
 }
 
 
@@ -32,6 +43,7 @@
     margin-left: 15vw;
     margin-top: 0.5vh;
     margin-bottom: 30px;
+    font-family: Cambria;
 }
 
 @media screen and (max-width: 768px) {

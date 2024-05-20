@@ -6,12 +6,12 @@
 <form method="post" asp-controller="Home" asp-action="NewPost">
     <div>
         <label asp-for="Title">Title: </label>
-        <input type="text" asp-for="Title" />
+        <input type="text" asp-for="Title" maxlength="100" />
         <span asp-validation-for="Title"></span>
     </div>
     <div>
         <label asp-for="Description">Description: </label>
-        <input type="text" asp-for="Description" />
+        <textarea asp-for="Description" rows="5" class="form-textarea" maxlength="500"></textarea>
         <span asp-validation-for="Description"></span>
     </div>
     <input type="submit" value="Опубликовать" />

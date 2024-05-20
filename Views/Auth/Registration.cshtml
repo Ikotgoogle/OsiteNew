@@ -1,61 +1,57 @@
 ﻿@using OsiteNew.Models;
 @model User
+<link href="/css/registration.css" rel="stylesheet" />
+<div class="registration-container">
+    <h1 class="heading">Регистрация</h1>
+    <form method="post" asp-controller="Auth" asp-action="Registration" class="registration-form">
+        <div class="form-group">
+            <label asp-for="Name" class="form-label">Имя:</label>
+            <input type="text" asp-for="Name" class="form-input" maxlength="50"/>
+            <span asp-validation-for="Name" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="form-label">Фамилия:</label>
+            <input type="text" asp-for="LastName" class="form-input" maxlength="50"/>
+            <span asp-validation-for="LastName" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Nickname" class="form-label">Придумайте ник (необязательно):</label>
+            <input type="text" asp-for="Nickname" class="form-input" maxlength="50"/>
+            <span asp-validation-for="Nickname" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Birthday" class="form-label">День рождения:</label>
+            <input type="date" asp-for="Birthday" class="form-input" />
+            <span asp-validation-for="Birthday" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="form-label">Номер телефона:</label>
+            <input type="tel" asp-for="PhoneNumber" class="form-input" maxlength="15"/>
+            <span asp-validation-for="PhoneNumber" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address" class="form-label">Адрес проживания:</label>
+            <input type="text" asp-for="Address" class="form-input" maxlength="100"/>
+            <span asp-validation-for="Address" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="About" class="form-label">Расскажите о себе:</label>
+            <textarea asp-for="About" rows="5" class="form-textarea" maxlength="500"></textarea>
+            <span asp-validation-for="About" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="form-label">Email:</label>
+            <input type="text" asp-for="Email" class="form-input" maxlength="50"/>
+            <span asp-validation-for="Email" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="form-label">Пароль:</label>
+            <input type="password" asp-for="Password" class="form-input" maxlength="50"/>
+            <span asp-validation-for="Password" class="validation-message"></span>
+        </div>
 
-<div>
-    <h1>Регистрация</h1>
-    <div>
-        <form method="post" asp-controller="Auth" asp-action="Registration">
-            <div>
-                <label asp-for="Name">Имя: </label>
-                <input type="text" asp-for="Name" />
-                <span asp-validation-for="Name"></span>
-
-            </div>
-            <div>
-                <label asp-for="LastName">Фамилия: </label>
-                <input type="text" asp-for="LastName" />
-                <span asp-validation-for="LastName"></span>
-
-            </div>
-            <div>
-                <label asp-for="Nickname">Придумайте ник (необяз): </label>
-                <input type="text" asp-for="Nickname" />
-                <span asp-validation-for="Nickname"></span>
-            </div>
-            <div>
-                <label asp-for="Birthday">День рождения: </label>
-                <input type="date" asp-for="Birthday" />
-                <span asp-validation-for="Birthday"></span>
-
-            </div>
-            <div>
-                <label asp-for="PhoneNumber">Номер телефона: </label>
-                <input type="tel" asp-for="PhoneNumber" />
-                <span asp-validation-for="PhoneNumber"></span>
-            </div>
-            <div>
-                <label asp-for="Address">Адрес проживания: </label>
-                <input type="text" asp-for="Address" />
-                <span asp-validation-for="Address"></span>
-            </div>
-            <div>
-                <label asp-for="About">Расскажите о себе: </label>
-                <input type="text" asp-for="About" />
-                <span asp-validation-for="About"></span>
-            </div>
-
-            <div>
-                <label asp-for="Email">Email:</label>
-                <input type="text" asp-for="Email" />
-                <span asp-validation-for="Email"></span>
-            </div>
-            <div>
-                <label asp-for="Password">Пароль:</label>
-                <input type="text" asp-for="Password" />
-                <span asp-validation-for="Password"></span>
-            </div>
-            <input type="submit" value="Зарегестрироваться" />
-        </form>
-    </div>
+        <div class="form-group">
+            <input type="submit" class="register-button" value="Зарегистрироваться"></input>
+        </div>
+    </form>
 </div>
-
