@@ -4,7 +4,7 @@
             new List<(string controller, string action, string content)> { 
                 ("Home", "HomePage", "Главная"),
                 ("Event", "EventPage", "События"),
-                ("Profile", "ProfilePage", "Профиль"),
+                //("Profile", "ProfilePage", "Профиль"),
             };
     }
 }

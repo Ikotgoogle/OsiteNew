@@ -17,6 +17,57 @@
     gap: 150px;
 }
 
+.headButtons {
+    display: flex;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 18px;
+    border: none;
+}
+
+.dropdownbtn {
+    display: flex;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    display: flex;
+}
+
+.links {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .links a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .links a:hover{ 
+        background-color: #ddd;
+    }
+
+.dropdown:hover .links{
+    display: flex;
+    flex-direction:column;
+}
+
+.dropdown:hover .dropdownbtn {
+    background-color: #3e8e41;
+}
+
 .logoButton {
     display: flex;
     border-radius: 50%;

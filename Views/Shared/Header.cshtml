@@ -9,8 +9,16 @@
         </a>
         <div class="buttons">
             @foreach(var button in HeaderButtons.headerButtonsList) {
-                <a asp-controller="@button.Item1" asp-action="@button.Item2">@button.Item3</a>
+                <a asp-controller="@button.Item1" asp-action="@button.Item2" class="headButtons">@button.Item3</a>
             }
+
+            <div class="dropdown">
+                <button class="dropdownbtn">Профиль</button>
+                <div class="links">
+                    <a asp-controller="Profile" asp-action="ProfilePage">Профиль</a>
+                    <a asp-controller="Profile" asp-action="Settings">Настройки</a>
+                </div>
+            </div>
 
             @if(!User.Identity.IsAuthenticated) {
                 <a asp-controller="Auth" asp-action="Login">Авторизация</a>

@@ -88,5 +88,9 @@ namespace OsiteNew.Controllers {
 
             return View("HomePage", await GetVM());
         }
+
+        public async Task<IActionResult> Settings (){
+            return View();
+        }
     }
 }
