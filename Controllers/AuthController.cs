@@ -45,7 +45,7 @@ namespace OsiteNew.Controllers {
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
-        public IActionResult Registration() {
+        public async Task<IActionResult> Registration() {
             return View();
         }
 
@@ -81,7 +81,7 @@ namespace OsiteNew.Controllers {
             return View(regUser);
         }
 
-        public IActionResult Login() {
+        public async Task<IActionResult> Login() {
             return View();
         }
 

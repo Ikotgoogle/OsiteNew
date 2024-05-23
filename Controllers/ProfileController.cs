@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OsiteNew.Models;
 using OsiteNew.ViewModels;
+using System.Diagnostics.Eventing.Reader;
 
 namespace OsiteNew.Controllers {
     public class ProfileController : Controller {
@@ -14,7 +15,7 @@ namespace OsiteNew.Controllers {
             _environment = environment; 
         }
 
-        ProfileVM _profileVM = new();
+        ProfileVM _profile = new();
         async Task<List<Post>> GetSortedUserPosts(int id) {
             List<Post> posts = await _context.Posts.Where(p=> p.Author.Id == id).ToListAsync();
             List<Post> sorted = posts.OrderBy(p => p.Date).ThenBy(p => p.Time).ToList();
@@ -29,9 +30,9 @@ namespace OsiteNew.Controllers {
 
         async Task<ProfileVM> GetVM() {
             User logUser = await GetLogUser();
-            _profileVM.LogUser = logUser;
-            _profileVM.Posts = await GetSortedUserPosts(logUser.Id);
-            return _profileVM;
+            _profile.LogUser = logUser;
+            _profile.Posts = await GetSortedUserPosts(logUser.Id);
+            return _profile;
         }
 
         [Authorize]
@@ -90,7 +91,30 @@ namespace OsiteNew.Controllers {
         }
 
         public async Task<IActionResult> Settings (){
-            return View();
+            return View(await GetVM());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AccountDataChanger(ProfileVM profile) {
+            if(ModelState.IsValid) {
+                User logUser = await GetLogUser();
+
+                logUser.Name = profile.LogUser.Name;
+                logUser.LastName = profile.LogUser.LastName;
+                logUser.Nickname = profile.LogUser.Nickname;
+                logUser.Birthday = profile.LogUser.Birthday;
+                logUser.PhoneNumber = profile.LogUser.PhoneNumber;
+                logUser.Address = profile.LogUser.Address;
+                logUser.About = profile.LogUser.About;
+
+                logUser.Email = profile.LogUser.Email;
+                logUser.Password = profile.LogUser.Password;
+
+                await _context.SaveChangesAsync();
+                RedirectToAction("Login", "Auth");
+                return View("Settings", await GetVM()); //перенаправить на стр "Успешно"
+            }
+            return View("Settings", await GetVM());
         }
     }
 }

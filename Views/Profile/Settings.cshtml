@@ -1,3 +1,67 @@
-﻿===
-<h1>НАСТРОЙКИ ПРОФИЛЯ</h1>
-===
+﻿@using OsiteNew.ViewModels
+@model ProfileVM
+
+<div class="settings">
+    <div class="avatar">
+        <img class="ava" src="@Model.LogUser.Avatar" />
+
+        <form method="post" enctype="multipart/form-data" action="/Profile/UploadAvatar" class="avaChanger">
+            <input type="file" name="avatar" accept="image/*" />
+            <input type="submit" value="Загрузить аватар" />
+        </form>
+    </div>
+
+    <div class="personalDataSettingsBlock">
+        <form method="post" action="AccountDataChanger" class="personalDataChanger">
+            <div class="form-group">
+                <label asp-for="LogUser.Name" class="form-label">Имя:</label>
+                <input type="text" asp-for="LogUser.Name" class="form-input" maxlength="50" />
+                <span asp-validation-for="LogUser.Name" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogUser.LastName" class="form-label">Фамилия:</label>
+                <input type="text" asp-for="LogUser.LastName" class="form-input" maxlength="50" />
+                <span asp-validation-for="LogUser.LastName" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogUser.Nickname" class="form-label">Придумайте ник (необязательно):</label>
+                <input type="text" asp-for="LogUser.Nickname" class="form-input" maxlength="50" />
+                <span asp-validation-for="LogUser.Nickname" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogUser.Birthday" class="form-label">День рождения:</label>
+                <input type="date" asp-for="LogUser.Birthday" class="form-input" />
+                <span asp-validation-for="LogUser.Birthday" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogUser.PhoneNumber" class="form-label">Номер телефона:</label>
+                <input type="tel" asp-for="LogUser.PhoneNumber" class="form-input" maxlength="15" />
+                <span asp-validation-for="LogUser.PhoneNumber" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogUser.Address" class="form-label">Адрес проживания:</label>
+                <input type="text" asp-for="LogUser.Address" class="form-input" maxlength="100" />
+                <span asp-validation-for="LogUser.Address" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogUser.About" class="form-label">Расскажите о себе:</label>
+                <textarea asp-for="LogUser.About" rows="5" class="form-textarea" maxlength="500"></textarea>
+                <span asp-validation-for="LogUser.About" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogUser.Email" class="form-label">Email:</label>
+                <input type="text" asp-for="LogUser.Email" class="form-input" maxlength="50" />
+                <span asp-validation-for="LogUser.Email" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogUser.Password" class="form-label">Пароль:</label>
+                <input type="password" asp-for="LogUser.Password" class="form-input" maxlength="50" />
+                <span asp-validation-for="LogUser.Password" class="validation-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="saveButton"/>
+            </div>
+        </form>
+    </div>
+</div>
