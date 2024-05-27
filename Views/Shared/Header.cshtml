@@ -13,7 +13,7 @@
             }
 
             <div class="dropdown">
-                <button class="dropdownbtn">Профиль</button>
+                <button class="headButtons" asp-controller="Profile" asp-action="ProfilePage">Профиль</button>
                 <div class="links">
                     <a asp-controller="Profile" asp-action="ProfilePage">Профиль</a>
                     <a asp-controller="Profile" asp-action="Settings">Настройки</a>
@@ -21,14 +21,16 @@
             </div>
 
             @if(!User.Identity.IsAuthenticated) {
-                <a asp-controller="Auth" asp-action="Login">Авторизация</a>
+                <a asp-controller="Auth" asp-action="Login" class="headButtons">Авторизация</a>
             } else {
-                <div> 
+                <div class="user-info">
                     @User.FindFirst(ClaimTypes.Email).Value |
-
-                    <a asp-controller="Auth" asp-action="Logout">Выйти</a>
+                    <a asp-controller="Auth" asp-action="Logout" class="headButtons">Выйти</a>
                 </div>
             }
         </div>
     </div>
 </header>
+
+                    <style>
+                    </style>

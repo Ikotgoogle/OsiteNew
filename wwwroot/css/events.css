@@ -1,9 +1,14 @@
-﻿.main {
+﻿/*.main {
     display: flex;
     align-items: center;
     margin-left: 12vw;
     margin-top: 2.5vh;
     height: 50px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 70%;
 }
 
 .title {
@@ -34,7 +39,7 @@
     margin-left: 15vw;
     font-size: 20px;
     font-family: Cambria;
-    font-weight:900;
+    font-weight: 900;
 }
 
 
@@ -62,14 +67,14 @@
         margin-left: 15vw;
     }
 }
-
+*/  
 .newEventButton {
     position: fixed;
-    right: 20px;
-    bottom: 20px;
+    right: 0px;
+    bottom: 0px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    border: 2px solid #242424;
+    border: 1.5px solid #242424;
     width: 80px;
     height: 80px;
     background-image: url('../img/plus.png');
@@ -77,3 +82,82 @@
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
+
+
+.events {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.main {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 65%;
+}   
+
+.title {
+    display: flex;
+    align-items: center;
+    /*font-family: 'Javanese Text';*/
+    margin-bottom: 10px;
+}
+
+    .title h1 {
+        font-size: 30px;
+        margin-right: 10px;
+    }
+
+    .title h2 {
+        font-family: Consolas;
+        font-size: 16px;
+        margin-right: 10px;
+        color: dimgray;
+    }
+
+.place {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: Cambria;
+}
+
+.desc {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: Cambria;
+}
+
+form {
+    display: inline-block;
+    gap: 10px;
+    margin-top: -10px;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/*
+.newEventButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+}*/

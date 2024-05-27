@@ -23,7 +23,7 @@ namespace OsiteNew.Controllers {
 
         async Task<List<Post>> GetSortedPosts() {
             List<Post> posts = await _context.Posts.ToListAsync();
-            List<Post> sorted = posts.OrderBy(p => p.Date).ThenBy(p => p.Time).ToList();
+            List<Post> sorted = posts.OrderByDescending(p => p.Date).ThenByDescending(p => p.Time).ToList();
             return sorted;
         }
 

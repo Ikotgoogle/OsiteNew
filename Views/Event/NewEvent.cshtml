@@ -1,8 +1,7 @@
 ﻿@using OsiteNew.ViewModels;
 @model EventsVM
-
-@if(!Model.IsEditMode) {
-    
+<link href="/css/newevent.css" rel="stylesheet" />
+@if(!Model.IsEditMode) {    
 <h1>Создание нового события</h1>
 <form method="post" asp-controller="Event" asp-action="NewEvent">
     <div>

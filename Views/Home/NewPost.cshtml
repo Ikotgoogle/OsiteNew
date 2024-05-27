@@ -1,18 +1,19 @@
 ﻿@using OsiteNew.Models;
 @model Post
+<link href="/css/newpost.css" rel="stylesheet" />
 
 <h1>Ваш новый пост</h1>
 
-<form method="post" asp-controller="Home" asp-action="NewPost">
-    <div>
-        <label asp-for="Title">Title: </label>
-        <input type="text" asp-for="Title" maxlength="100" />
-        <span asp-validation-for="Title"></span>
+<form method="post" asp-controller="Home" asp-action="NewPost" class="post-form">
+    <div class="form-group">
+        <label asp-for="Title">Заголовок: </label>
+        <input type="text" asp-for="Title" maxlength="100" class="form-input" />
+        <span asp-validation-for="Title" class="validation-message"></span>
     </div>
-    <div>
-        <label asp-for="Description">Description: </label>
+    <div class="form-group">
+        <label asp-for="Description">Содержание: </label>
         <textarea asp-for="Description" rows="5" class="form-textarea" maxlength="500"></textarea>
-        <span asp-validation-for="Description"></span>
+        <span asp-validation-for="Description" class="validation-message"></span>
     </div>
-    <input type="submit" value="Опубликовать" />
+    <input type="submit" value="Опубликовать" class="submitButton" />
 </form>

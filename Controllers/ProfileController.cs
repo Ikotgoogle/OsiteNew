@@ -18,7 +18,7 @@ namespace OsiteNew.Controllers {
         ProfileVM _profile = new();
         async Task<List<Post>> GetSortedUserPosts(int id) {
             List<Post> posts = await _context.Posts.Where(p=> p.Author.Id == id).ToListAsync();
-            List<Post> sorted = posts.OrderBy(p => p.Date).ThenBy(p => p.Time).ToList();
+            List<Post> sorted = posts.OrderByDescending(p => p.Date).ThenByDescending(p => p.Time).ToList();
             return sorted;
         }
 
@@ -87,7 +87,7 @@ namespace OsiteNew.Controllers {
                 await _context.SaveChangesAsync();
             }
 
-            return View("HomePage", await GetVM());
+            return View("ProfilePage", await GetVM());
         }
 
         public async Task<IActionResult> Settings (){

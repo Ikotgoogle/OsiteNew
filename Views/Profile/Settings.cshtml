@@ -1,5 +1,6 @@
 ﻿@using OsiteNew.ViewModels
 @model ProfileVM
+<link href="/css/settings.css" rel="stylesheet" />
 
 <div class="settings">
     <div class="avatar">
@@ -7,7 +8,7 @@
 
         <form method="post" enctype="multipart/form-data" action="/Profile/UploadAvatar" class="avaChanger">
             <input type="file" name="avatar" accept="image/*" />
-            <input type="submit" value="Загрузить аватар" />
+            <input type="submit" value="Применить аватар" />
         </form>
     </div>
 

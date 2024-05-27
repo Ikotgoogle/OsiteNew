@@ -94,7 +94,7 @@
     bottom: 20px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    border: 2px solid #242424;
+    border: 1.5px solid #242424;
     width: 80px;
     height: 80px;
     background-image: url('../img/plus.png');
