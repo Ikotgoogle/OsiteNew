@@ -55,18 +55,19 @@ namespace OsiteNew.Controllers {
                 User user = await _context.Users.FirstOrDefaultAsync(u => u.Email == regUser.Email);
                 Role role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
                 if(user == null) {
-                    user = new User {
-                        Name = regUser.Name,
-                        LastName = regUser.LastName,
-                        Birthday = regUser.Birthday,
-                        PhoneNumber = regUser.PhoneNumber,
-                        Email = regUser.Email,
-                        Password = regUser.Password,
-                        Address = regUser.Address,
-                        About = regUser.About,
-                        Nickname = regUser.Nickname,
-                        Role = role,
-                        RoleId = role.Id
+                user = new User {
+                    Name = regUser.Name,
+                    LastName = regUser.LastName,
+                    Birthday = regUser.Birthday,
+                    PhoneNumber = regUser.PhoneNumber,
+                    Email = regUser.Email,
+                    Password = regUser.Password,
+                    Address = regUser.Address,
+                    About = regUser.About,
+                    Nickname = regUser.Nickname,
+                    Avatar = "/img/nullAva.png",
+                    Role = role,
+                    RoleId = role.Id
                     };
 
                     _context.Users.Add(user);
