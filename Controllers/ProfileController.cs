@@ -35,9 +35,25 @@ namespace OsiteNew.Controllers {
             return _profile;
         }
 
+        async Task<ProfileVM> GetVM(int authorId) {
+            User logUser = await GetLogUser();
+            _profile.LogUser = logUser;
+            _profile.Posts = await GetSortedUserPosts(authorId);
+            _profile.Author = await _context.Users.FindAsync(authorId);
+            return _profile;
+        }
+
         [Authorize]
         public async Task<IActionResult> ProfilePage() {
             return View(await GetVM());
+        }
+
+        [Authorize]
+        public async Task<IActionResult> AuthorPage(int userId) {
+            User author = await _context.Users.FindAsync(userId);
+            if(author != null)
+                return View(await GetVM(userId));
+            else return View(await GetVM());
         }
 
         [HttpPost]

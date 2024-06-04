@@ -1,5 +1,4 @@
-﻿
-header {
+﻿header {
     background-color: #333;
     color: #fff;
     padding: 10px 0;
@@ -29,7 +28,7 @@ header {
 .buttons {
     display: flex;
     align-items: center;
-    gap: 110px;
+    gap: 150px;
 }
 
 .headButtons {
@@ -114,6 +113,8 @@ header {
     .buttons {
         gap: 40px;
     }
+
+
 }
 
 @media (max-width: 1100px) {

@@ -1,3 +1,30 @@
-﻿===
-adm panel
-===
+﻿<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".headButtons").click(function () {
+            var sectionName = $(this).data("selection");
+            $.ajax({
+                url: "/Panel/GetContent",
+                type: "GET",
+                data: { section: sectionName },
+                success: function (data) {
+                    $("#content").html(data);
+                }
+            });
+        });
+    });
+</script>
+<link href="/css/panel.css" rel="stylesheet" />
+
+<div class="header">
+    <div class="container">
+        <div class="buttons">
+            <button data-selection="users" class="headButtons">Все пользователи</button>
+            <button data-selection="something" class="headButtons">В разработке</button>
+            <button data-selection="something" class="headButtons">В разработке</button>
+        </div>
+    </div>
+</div>
+
+<div id="content" class="content">
+</div>

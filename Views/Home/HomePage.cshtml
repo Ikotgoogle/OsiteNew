@@ -25,8 +25,10 @@
         <div class="post">
             <div class="postHead">
                 <div class="author">
-                    <img src="@post.Author.Avatar"/>
-                    <div class="nick">@post.Author.Nickname</div>
+                    <a asp-controller="Profile" asp-action="AuthorPage" asp-route-userId="@post.Author.Id">
+                        <img src="@post.Author.Avatar"/>
+                        <div class="nick">@post.Author.Nickname</div>
+                    </a>
                 </div>
                 <div class="title">
                     <h1>@post.Title</h1>

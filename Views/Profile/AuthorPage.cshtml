@@ -1,0 +1,63 @@
+﻿@using OsiteNew.ViewModels
+@model ProfileVM
+@{
+    bool IsAdmin = false;
+    bool IsMyPost = false;
+    bool IsAuthenticated = false;
+}
+@if(User.Identity.IsAuthenticated)
+    IsAuthenticated = true;
+
+@if(IsAuthenticated && Model.LogUser.RoleId == 1)
+    IsAdmin = true;
+
+@if (Model.Author == null)
+    Model.Author = Model.LogUser;
+
+<link href="/css/profile.css" rel="stylesheet" />
+
+<div class="page">
+    <div class="head">
+        <img class="ava" src="@Model.Author.Avatar" />
+
+        <div class="personalData">
+            <p>@Model.Author.Name</p>
+            <p>@Model.Author.Birthday</p>
+            <p>@Model.Author.PhoneNumber</p>
+            <p>@Model.Author.About</p>
+        </div>
+    </div>
+
+    @if(Model.LogUser == Model.Author)
+        @await Html.PartialAsync("NewPost")
+
+    <div class="posts">
+        @foreach(var post in Model.Posts) {
+            IsMyPost = false;
+            @if(IsAuthenticated && Model.LogUser.Email == post.Author.Email)
+                IsMyPost = true;
+            <div class="post">
+                <div class="postHead">
+                    <div class="author">
+                        <img src="@post.Author.Avatar" />
+                        <div class="nick">@post.Author.Nickname</div>
+                    </div>
+                    <div class="title">
+                        <h1>@post.Title</h1>
+                        <h2>@post.Date </h2>
+                        <h2>@post.Time</h2>
+                    </div>
+
+                    @if(IsAdmin || IsMyPost) {
+                        <form method="post">
+                            <input type="hidden" name="id" value="@post.Id" />
+                            <input asp-action="Delete" type="submit" value="Удалить" />
+                        </form>
+                    }
+
+                </div>
+                <div class="desc">@post.Description</div>
+            </div>
+        }
+    </div>
+</div>

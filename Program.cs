@@ -27,9 +27,17 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseStaticFiles();
 
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{Controller=Home}/{Action=HomePage}"
-    );
+);
+
+app.MapControllerRoute(
+    name: "userProfile",
+    pattern: "Profile/ProfilePage/{userId}",
+    defaults: new { controller="Profile", action="ProfilePage" }
+);
 
 app.Run();
