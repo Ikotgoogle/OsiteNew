@@ -76,7 +76,7 @@ namespace OsiteNew.Controllers {
                 _context.Posts.Add(post);
                 await _context.SaveChangesAsync();
             }
-            return View("HomePage", await GetVM());
+            return RedirectToAction("HomePage");
         }
 
         [HttpPost]
@@ -87,7 +87,7 @@ namespace OsiteNew.Controllers {
                 await _context.SaveChangesAsync();
             }
 
-            return View("HomePage", await GetVM());
+            return RedirectToAction("HomePage");
         }
     }
 }

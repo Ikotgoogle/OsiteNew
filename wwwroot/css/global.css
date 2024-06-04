@@ -1,11 +1,21 @@
-﻿body {
+﻿.body {
     width: 70%;
     background-color: white;
     margin-inline: auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom:10px;
 }
 
 .renderBody{
     width: 100%;
+    height: max-content;
+}
+
+footer {
+    background-color: white;
+    height: 150px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }

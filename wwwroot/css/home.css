@@ -59,6 +59,7 @@
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
+    word-break: break-all;
 }
 
 @media screen and (max-width: 768px) {

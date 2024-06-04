@@ -17,6 +17,9 @@
                 <div class="links">
                     <a asp-controller="Profile" asp-action="ProfilePage">Профиль</a>
                     <a asp-controller="Profile" asp-action="Settings">Настройки</a>
+                    @if(User.IsInRole("admin")){
+                        <a asp-controller="Panel" asp-action="PanelPage">Панель администратора</a>
+                    }
                 </div>
             </div>
 
