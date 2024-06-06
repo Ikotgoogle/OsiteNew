@@ -117,8 +117,6 @@
     margin-top:5vh;
 }
 
-/*Оформление формы создания поста*/
-
 .header {
     width: 85%;
     margin: 20px auto;
@@ -164,7 +162,7 @@
 }
 
 .submit-button {
-    background-color: #4CAF50;
+    background-color: #333;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -174,10 +172,22 @@
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.3s ease;
 }
 
     .submit-button:hover {
-        background-color: #3e8e41; 
+        background-color: #fff;
+        color: #333;
+        border: 0.1px solid #333;
+    }
+
+.delete {
+    border: none;
+    background: none;
+    font-size: 25px;
+    padding: 3px;
+}
+    .delete:hover {
+        cursor: pointer;
     }
 

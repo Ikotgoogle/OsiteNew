@@ -39,7 +39,7 @@
                 @if(IsAdmin || IsMyPost) {
                     <form method="post">
                         <input type="hidden" name="id" value="@post.Id" />
-                        <input asp-action="Delete" type="submit" value="Удалить" />
+                        <input class="delete" asp-action="Delete" type="submit" value="×" />
                     </form>
                 }
 

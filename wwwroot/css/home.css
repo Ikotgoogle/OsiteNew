@@ -75,7 +75,7 @@
         }
 
     .desc {
-        margin-left: 15vw;
+        margin-left: 23vw;
     }
 }
 
@@ -107,3 +107,14 @@ a{
     text-decoration:none;
     color: black;
 }
+
+.delete {
+    border: none;
+    background: none;
+    font-size: 25px;
+    padding: 3px;
+}
+
+    .delete:hover {
+        cursor: pointer;
+    }

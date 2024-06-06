@@ -51,9 +51,12 @@ namespace OsiteNew.Controllers {
 
         [HttpPost]
         public async Task<IActionResult> Registration(User regUser) {
-            //if(ModelState.IsValid) {
+            if(ModelState.IsValid) {
                 User user = await _context.Users.FirstOrDefaultAsync(u => u.Email == regUser.Email);
                 Role role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
+
+                if(BanListClass.BanList.Contains(regUser.Email)) ModelState.AddModelError("", "Данный Email забанен!");
+
                 if(user == null) {
                 user = new User {
                     Name = regUser.Name,
@@ -78,7 +81,7 @@ namespace OsiteNew.Controllers {
                     return RedirectToAction("HomePage", "Home");
                 } else
                     ModelState.AddModelError("", "Пользователь с таким Email уже существует.");
-            //}
+            }
             return View(regUser);
         }
 

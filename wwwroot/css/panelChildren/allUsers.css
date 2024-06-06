@@ -1,0 +1,66 @@
+﻿.ava {
+    display: flex;
+    align-items: center;
+    margin-left: 12vw;
+    margin-top: 2.5vh;
+    height: 50px;
+}
+
+.user {
+    display: flex;
+    margin-top: 55px;
+}
+
+    .user img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+.nick {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 3px;
+    font-family: Consolas;
+}
+
+.name {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+    font-family: 'Javanese Text';
+}
+    .name h1 {
+        font-size: 26px;
+        margin-right: 10px;
+        margin-top: 20px;
+    }
+
+    .name h2 {
+        font-family: Consolas;
+        font-size: 14px;
+        margin-right: 10px;
+        color: gray;
+    }
+
+.user form {
+    margin-left: auto;
+    font-size: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.delete {
+    border: none;
+    background: none;
+    font-size: 25px;
+    padding: 3px;
+}
+
+    .delete:hover {
+        cursor: pointer;
+    }

@@ -1,6 +1,8 @@
  using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using OsiteNew.Models;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
+using Microsoft.Extensions.FileSystemGlobbing.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,5 +41,11 @@ app.MapControllerRoute(
     pattern: "Profile/ProfilePage/{userId}",
     defaults: new { controller="Profile", action="ProfilePage" }
 );
+
+//app.MapControllerRoute(
+//    name:
+//    pattern:
+//    defaults:
+//);
 
 app.Run();

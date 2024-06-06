@@ -87,7 +87,7 @@ namespace OsiteNew.Controllers {
                 _context.Events.Add(ev);
                 await _context.SaveChangesAsync();
             }
-            return View("EventPage", await GetVM()) ;
+            return View("NewEvent", await GetVM()) ;
         }
 
         [HttpPost]
@@ -107,6 +107,7 @@ namespace OsiteNew.Controllers {
                 ev.Time = edEv.Event.Time;
                 await _context.SaveChangesAsync();
             }
+            else return View("NewEvent", await GetVM(await _context.Events.FindAsync(id), true));
             return RedirectToAction("EventPage");
         }
 

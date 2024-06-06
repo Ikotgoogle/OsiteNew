@@ -1,1 +1,26 @@
-﻿all users
+﻿@using OsiteNew.Models
+@model List<User>
+<link href="/css/panelchildren/allusers.css" rel="stylesheet" />
+<h1>Все пользователи: </h1>
+<div class="users">
+        @foreach(var user in Model) {
+            <div class="user"> 
+                <div class="ava">
+                    <a asp-controller="Profile" asp-action="AuthorPage" asp-route-userId="@user.Id">
+                        <img src="@user.Avatar" />
+                        <div class="nick">@user.Nickname</div>
+                    </a>
+                </div>
+                <div class="name">
+                    <h1>@user.Name</h1>
+                    <h1>@user.LastName</h1>
+                    <h2>@user.Birthday</h2>
+                </div>
+
+                <form method="post">
+                    <input type="hidden" name="id" value="@user.Id" />
+                    <input class="delete" asp-action="Delete" type="submit" value="×" />
+                </form>
+            </div>
+        }
+</div>

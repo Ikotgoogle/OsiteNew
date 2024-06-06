@@ -18,8 +18,6 @@
     margin-bottom: 20px;
 }
 
-/* Form styles */
-
 .login-form,
 .register-form {
     display: flex;
@@ -52,7 +50,7 @@
 
 .login-button,
 .register-button {
-    background-color: #4CAF50;
+    background-color: #333;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -63,14 +61,16 @@
     margin: 10px 0;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .register-button {
-    background-color: #3498DB;
+    background-color: #7b001c;
 }
 
     .login-button:hover,
     .register-button:hover {
-        background-color: #3e8e41; /* Darker green */
-        opacity: 0.8;
+        background-color: #fff;
+        color: #333;
+        border: 0.1px solid #333;
     }

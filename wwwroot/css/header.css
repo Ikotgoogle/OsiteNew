@@ -44,6 +44,7 @@
     .headButtons:hover {
         background-color: #333;
         color: #fff;
+        border-color: #fff;
     }
 
 .dropdown {
@@ -73,6 +74,7 @@
     min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     border-radius: 10%;
+    margin-top: 15px;
 }
 
     .links a {
@@ -97,35 +99,40 @@
     color: #fff;
 }
 
-@media (max-width: 1615px) {
+@media (width < 1615px) {
     .buttons {
         gap: 120px;
     }
 }
 
-@media (max-width: 1445px) {
+@media (width < 1445px) {
     .buttons {
         gap: 90px;
     }
 }
 
-@media (max-width: 1275px) {
+@media (width < 1315px) {
     .buttons {
-        gap: 40px;
+        gap: 70px;
     }
-
-
 }
 
-@media (max-width: 1100px) {
+@media (width < 1230px) {
+    .buttons {
+        gap: 50px;
+    }
+}
+
+@media (width < 1145px) {
     .buttons {
         gap: 30px;
     }
 }
 
-@media (max-width: 1040px) {
+@media (width < 1055px) {
     .container {
         height: 260px;
+        justify-content:space-around;
     }
 
     .buttons {
@@ -138,9 +145,12 @@
         width: 150px;
         height: 150px;
     }
+    .user-info{
+        padding: 15px;
+    }
 }
 
-@media (max-width: 620px) {
+@media (width < 681px) {
     .container {
         height: 450px;
         justify-content: center;
