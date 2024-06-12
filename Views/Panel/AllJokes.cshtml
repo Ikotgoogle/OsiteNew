@@ -1,0 +1,27 @@
+﻿@using OsiteNew.Models
+@model List<Joke>
+
+<link href="/css/panelchildren/alljokes.css" rel="stylesheet" />
+
+<div class="newJokeBlock">
+    <form method="post" asp-action="AddNewJoke" class="newJokeForm">
+        <input type="text" maxlength="300" class="joke-input"/>
+        <input type="submit" class="newJoke" />
+    </form>
+</div>
+
+<div class="jokes">
+    @foreach(var joke in Model) {
+        <div class="joke">
+            <div class="content"> 
+                @joke.Content
+            </div>
+            
+            <form method="post" asp-action="DeleteJoke" class="deleteJokeForm">
+                <input type="hidden" value="@joke.Id" />
+                <input type="submit" class="deleteJoke" value="x" />
+            </form>
+        </div>
+    }
+</div>
+

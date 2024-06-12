@@ -1,0 +1,20 @@
+﻿.joke {
+    display: flex;
+    margin-top: 55px;
+}
+
+.deleteJokeForm {
+    margin-left: auto;
+    font-size: 0px;
+}
+
+.deleteJoke {
+    border: none;
+    background: none;
+    font-size: 25px;
+    padding: 3px;
+}
+
+    .deleteJoke:hover {
+        cursor: pointer;
+    }

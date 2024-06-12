@@ -8,7 +8,8 @@ namespace OsiteNew.Models {
         public DbSet<Event> Events { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<User> BannedUsers { get; set; }
+        public DbSet<Joke> Jokes { get; set; }
 
         public MyAppContext(DbContextOptions<MyAppContext> options) : base(options) {
             Database.EnsureCreated();

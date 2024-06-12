@@ -73,7 +73,6 @@ namespace OsiteNew.Controllers {
                     Time = TimeOnly.FromDateTime(DateTime.Now),
                     Description = newPost.Description,
                     Author = await GetLogUser(),
-                    Comments = new()
                 };
                 _context.Posts.Add(post);
                 await _context.SaveChangesAsync();

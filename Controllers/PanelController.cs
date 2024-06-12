@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OsiteNew.Models;
+using OsiteNew.ViewModels;
 
 namespace OsiteNew.Controllers {
     public class PanelController : Controller {
         private MyAppContext _context;
+
         public PanelController(MyAppContext context) {
             _context = context;
         }
@@ -15,12 +17,15 @@ namespace OsiteNew.Controllers {
 
         public async Task<ActionResult> GetContent(string section) {
             string content = string.Empty;
-            List<User> users = await _context.Users.ToListAsync();
 
             switch(section) {
                 case "users":
-                    return PartialView("AllUsers", users);
-                case "something":
+                    AllUsersVM allUsersVM = new(_context);
+                    return PartialView("AllUsers", allUsersVM);
+                case "jokes":
+                    List<Joke> jokes = await _context.Jokes.ToListAsync();
+                    return PartialView("AllJokes", jokes);
+                default:
                     content = "<h1>Страница в разработке</h1>";
                     break;
             }
@@ -28,12 +33,23 @@ namespace OsiteNew.Controllers {
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int id) {
+        public async Task<IActionResult> Ban(int id) {
             var p = await _context.Users.FindAsync(id);
             if(p != null) {
-                string e = p.Email;
-                BanListClass.BanList.Add(e);
                 _context.Users.Remove(p);
+                _context.BannedUsers.Add(p);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("PanelPage");
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> Unban(int id) {
+            var p = await _context.Users.FindAsync(id);
+            if(p != null) {
+                _context.BannedUsers.Remove(p);
+                _context.Users.Add(p);
                 await _context.SaveChangesAsync();
             }
 
