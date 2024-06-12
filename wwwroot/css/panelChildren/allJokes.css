@@ -63,5 +63,11 @@
     font-weight: 900;
     color: #333;
     border: none;
-    cursor: pointer;
+    background: none;
+    font-size: 25px;
+    padding: 3px;
 }
+
+    .deleteJoke:hover {
+        cursor: pointer;
+    }
