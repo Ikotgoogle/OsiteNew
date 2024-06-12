@@ -55,7 +55,7 @@ namespace OsiteNew.Controllers {
                 User user = await _context.Users.FirstOrDefaultAsync(u => u.Email == regUser.Email);
                 Role role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
 
-                if(BanListClass.BanList.Contains(regUser.Email)) ModelState.AddModelError("", "Данный Email забанен!");
+                if(_context.BannedUsers.Any(u => u.Email==regUser.Email)) ModelState.AddModelError("", "Данный Email забанен!");
 
                 if(user == null) {
                 user = new User {

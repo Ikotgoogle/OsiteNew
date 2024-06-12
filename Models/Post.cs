@@ -6,6 +6,5 @@
         public TimeOnly Time { get; set; }
         public string Description { get; set; }
         public User Author { get; set; }
-        public List<Comment>? Comments { get; set; }
     }
 }

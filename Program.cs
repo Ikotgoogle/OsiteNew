@@ -17,10 +17,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         opiton.LogoutPath = new PathString("/Home/HomePage");
     });
 
-/* Свойство LoginPath класса CookieAuthenticationOptions указывает на путь, по которому 
- * неаутентифицированный клиент будет автоматически переадресовываться при обращении к ресурсу, 
- * для доступа к которому требуется аутентификация*/
-
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -28,8 +24,6 @@ var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseStaticFiles();
-
-
 
 app.MapControllerRoute(
     name: "default",
@@ -41,11 +35,5 @@ app.MapControllerRoute(
     pattern: "Profile/ProfilePage/{userId}",
     defaults: new { controller="Profile", action="ProfilePage" }
 );
-
-//app.MapControllerRoute(
-//    name:
-//    pattern:
-//    defaults:
-//);
 
 app.Run();

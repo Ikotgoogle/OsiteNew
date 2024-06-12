@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using OsiteNew.Models;
 using OsiteNew.ViewModels;
+using System.Linq;
 
 namespace OsiteNew.Controllers {
     public class HomeController : Controller {
@@ -42,6 +43,12 @@ namespace OsiteNew.Controllers {
             User loggedUser = await _context.Users.FindAsync(userId);
             return loggedUser; 
         }
+        string GetRandomJoke() {
+            List<Joke> jokes = _context.Jokes.ToList();
+            Random random = new Random();
+            int i = random.Next(jokes.Count);
+            return jokes[i].Content;
+        }
 
         public async Task<IActionResult> HomePage() {
             try {
@@ -55,6 +62,8 @@ namespace OsiteNew.Controllers {
                     }
                 }
             } catch { }
+
+            ViewData["joke"] = GetRandomJoke();
 
             return View(await GetVM());
         }
@@ -73,7 +82,6 @@ namespace OsiteNew.Controllers {
                     Time = TimeOnly.FromDateTime(DateTime.Now),
                     Description = newPost.Description,
                     Author = await GetLogUser(),
-                    Comments = new()
                 };
                 _context.Posts.Add(post);
                 await _context.SaveChangesAsync();

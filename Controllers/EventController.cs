@@ -87,7 +87,7 @@ namespace OsiteNew.Controllers {
                 _context.Events.Add(ev);
                 await _context.SaveChangesAsync();
             }
-            return View("NewEvent", await GetVM()) ;
+            return View("EventPage", await GetVM()) ;
         }
 
         [HttpPost]

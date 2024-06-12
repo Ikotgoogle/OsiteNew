@@ -1,0 +1,29 @@
+﻿@using OsiteNew.ViewModels
+@model JokesVM
+
+<link href="/css/panelchildren/alljokes.css" rel="stylesheet" />
+
+<div class="newJokeBlock">
+    <h1>Новый анекдот: </h1>
+    <form method="post" asp-action="AddNewJoke" class="newJokeForm">
+        <textarea asp-for="Joke.Content" maxlength="300" rows="5" class="joke-input" ></textarea>
+        <span asp-validation-for="Joke.Content"></span>
+        <input type="submit" class="newJoke" value="Добавить" />
+    </form>
+</div>
+
+<div class="jokes">
+    @foreach(var joke in Model.Jokes) {
+        <div class="joke">
+            <div class="content"> 
+                @joke.Content
+            </div>
+            
+            <form method="post" asp-action="DeleteJoke" class="deleteJokeForm">
+                <input type="hidden" name="id" value="@joke.Id" />
+                <input type="submit" class="deleteJoke" value="x" />
+            </form>
+        </div>
+    }
+</div>
+

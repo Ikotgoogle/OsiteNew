@@ -87,7 +87,6 @@ namespace OsiteNew.Controllers {
                     Time = TimeOnly.FromDateTime(DateTime.Now),
                     Description = newPost.Post.Description,
                     Author = await GetLogUser(),
-                    Comments = new()
                 };
                 _context.Posts.Add(post);
                 await _context.SaveChangesAsync();
@@ -128,7 +127,7 @@ namespace OsiteNew.Controllers {
 
                 await _context.SaveChangesAsync();
                 RedirectToAction("Login", "Auth");
-                return View("Settings", await GetVM()); //перенаправить на стр "Успешно"
+                return View("Settings", await GetVM());
             }
             return View("Settings", await GetVM());
         }
